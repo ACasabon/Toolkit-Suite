@@ -16,4 +16,4 @@ Es por ello que no es suficiente con tener una tabla que vincule unos valores a 
 
 Una vez definidas esas relaciones, el programa podrá recorrer un fichero PDF con las configuraciones del motor, y generar el fichero que contenga todas las variables pertinentes.
 
-Una vez se deducen todas las variables correspondientes, estas se podrán visualizar y editar en la pestaña view (siempre hay que hacer pequeños retoques).
+Cuando se han obtenido todas las variables necesarias, estas se podrán visualizar y editar en la pestaña view (siempre hay que hacer pequeños retoques).
