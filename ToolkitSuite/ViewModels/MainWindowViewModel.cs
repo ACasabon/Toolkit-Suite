@@ -132,8 +132,10 @@ namespace ToolkitSuite.ViewModels
             OnPropertyChanged(nameof(CurrentViewModel));
         }
 
+        
         public void OpenActiveLogic()
         {
+            
             string path = Settings.Default.ActivePDFLogic;
             if (string.IsNullOrEmpty(path))
                 return;
@@ -147,6 +149,7 @@ namespace ToolkitSuite.ViewModels
 
 
             OnPropertyChanged(nameof(ActiveIconColor));
+        
         }
     }
 }

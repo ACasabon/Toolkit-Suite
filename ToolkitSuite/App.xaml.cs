@@ -9,6 +9,7 @@ using ToolkitSuite.Views;
 using ToolkitSuite.ViewModels;
 using ToolkitSuite.Stores;
 using ToolkitSuite.Properties;
+using System.IO;
 
 namespace ToolkitSuite
 {
@@ -51,8 +52,11 @@ namespace ToolkitSuite
             //Only Executed the first time the app is launched
             if (!Settings.Default.InitializedPaths)
             {
-                Settings.Default.PDFLogicFilesFolder = AppDomain.CurrentDomain.BaseDirectory + "Logic";
-                Settings.Default.ActivePDFLogic = AppDomain.CurrentDomain.BaseDirectory + @"Logic\Base.json";
+                //Settings.Default.PDFLogicFilesFolder = AppDomain.CurrentDomain.BaseDirectory + "Logic";
+                //Settings.Default.ActivePDFLogic = AppDomain.CurrentDomain.BaseDirectory + @"Data\Logic\Base.json";
+                string folder = Directory.GetParent(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName).FullName).FullName;
+                Settings.Default.PDFLogicFilesFolder = folder + @"\Data\Logic";
+                Settings.Default.ActivePDFLogic = Settings.Default.PDFLogicFilesFolder + @"\Base.json";
                 Settings.Default.InitializedPaths = true;
 
                 Settings.Default.Save();

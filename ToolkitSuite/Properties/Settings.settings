@@ -9,7 +9,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ActivePDFLogic" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Logic\Base.json</Value>
+      <Value Profile="(Default)">Data\Logic\Base.json</Value>
     </Setting>
   </Settings>
 </SettingsFile>
