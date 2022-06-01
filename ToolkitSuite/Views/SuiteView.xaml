@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="ToolkitSuite.Views.SuiteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToolkitSuite.Views"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--NEW PROJECT-->
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <TextBlock Margin="10,10,10,0" FontSize="20" FontWeight="SemiBold">NEW PROJECT</TextBlock>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+
+                <!--OPTION 1-->
+                <StackPanel Orientation="Horizontal" Style="{StaticResource RecentProject}">
+                    <fa:ImageAwesome Icon="FilePdfOutline" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock>PDF with Settings</TextBlock>
+                        <TextBlock Foreground="SlateGray">Start a project from a PDF generated from SAP</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                
+            </StackPanel>
+        </StackPanel>
+        
+        <!--SEPARATOR-->
+        <Border Grid.Column="1" BorderThickness="0" Margin="0,10" Background="#FF8A00E5"></Border>
+        
+        <!--RECENT PROJECTS-->
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            
+            <TextBlock Margin="10,10,10,0" FontSize="20" FontWeight="SemiBold">RECENT PROJECTS</TextBlock>
+            
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <!--ELEMENT 1-->
+                <StackPanel Orientation="Horizontal" Style="{StaticResource RecentProject}">
+                    <fa:ImageAwesome Icon="File" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock>ProjectTest.csv</TextBlock>
+                        <TextBlock Foreground="SlateGray">C:\Path\of\File\Example\ProjectTest.csv</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <!--ELEMENT 2-->
+                <StackPanel Orientation="Horizontal" Style="{StaticResource RecentProject}">
+                    <fa:ImageAwesome Icon="File" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock>ProjectTest.csv</TextBlock>
+                        <TextBlock Foreground="SlateGray">C:\Path\of\File\Example\ProjectTest.csv</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <!--ELEMENT 3-->
+                <StackPanel Orientation="Horizontal" Style="{StaticResource RecentProject}">
+                    <fa:ImageAwesome Icon="File" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock>ProjectTest.csv</TextBlock>
+                        <TextBlock Foreground="SlateGray">C:\Path\of\File\Example\ProjectTest.csv</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</UserControl>

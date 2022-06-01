@@ -1,0 +1,214 @@
+﻿<Window x:Class="ToolkitSuite.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToolkitSuite"
+        xmlns:views="clr-namespace:ToolkitSuite.Views"
+        xmlns:vms="clr-namespace:ToolkitSuite.ViewModels"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="Toolkit Suite" Height="450" Width="800" Padding="0" Margin="0" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/Resources/maintenance_32.png">
+    <Window.Background>
+        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+    </Window.Background>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:ProjectViewModel}">
+                <views:ProjectView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SuiteViewModel}">
+                <views:SuiteView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:OptionsViewModel}">
+                <views:OptionsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:LogicSettingsViewModel}">
+                <views:LogicSettingsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:InfoViewModel}">
+                <views:InfoView />
+            </DataTemplate>
+        </Grid.Resources>
+        
+        <!--MENU-->
+        <TabControl Margin="-6,-4,0,0" Panel.ZIndex="-1" SelectedIndex="{Binding SelectedMenuTab}">
+            <TabItem>
+                <TabItem.Header>
+                    <Grid Width="80" Height="20">
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">File</TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Panel.ZIndex="10" Margin="10,0">
+
+                    <Button Command="{Binding NewProjectCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical">
+                            <fa:ImageAwesome Icon="File" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">New</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding OpenProject}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="FolderOpen" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">Open</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding SaveProjectCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="Save" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">Save</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding ExportProjectCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="Download" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">Export</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Grid Width="80" Height="20">
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">View</TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <!--CONTENT-->
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Panel.ZIndex="10" Margin="10,0">
+
+                    <Button Command="{Binding AddGroupViewCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" ToolTip="Control + 1">
+                            <fa:ImageAwesome Icon="Folder" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Add Group</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding AddSubgroupViewCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" ToolTip="Control + 2">
+                            <fa:ImageAwesome Icon="FolderOpen" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Add Subg.</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding AddVariableViewCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" ToolTip="Control + 1">
+                            <fa:ImageAwesome Icon="Plus" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Add Variable</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding RemoveVariableViewCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" ToolTip="Supr">
+                            <fa:ImageAwesome Icon="Minus" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Remove Select</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding ImportViewCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" ToolTip="Supr">
+                            <fa:ImageAwesome Icon="ArrowDown" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Import File</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Grid Width="80" Height="20">
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">Settings</TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Panel.ZIndex="10" Margin="10,0">
+
+                    <Button Command="{Binding GeneralSettingsCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical">
+                            <fa:ImageAwesome Icon="Gear" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">General</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding InfoSettingsCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="InfoCircle" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">Info</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Visibility="{Binding DisplayPDFLogic, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TabItem.Header>
+                    <Grid Height="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0">PDF Logic</TextBlock>
+                        <Button Command="{Binding ClosePDFLogicTab}" Grid.Column="1" HorizontalAlignment="Center" Margin="8,0,0,0" Width="20" BorderThickness="0" Background="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">X</Button>
+                    </Grid>
+                </TabItem.Header>
+
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Panel.ZIndex="10" Margin="10,0">
+                    
+                    <Button Command="{Binding NewProjectCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical">
+                            <fa:ImageAwesome Icon="Star" Width="25" Height="25" Margin="5" Foreground="{Binding ActiveIconColor, FallbackValue=#FF8A00E5}"/>
+                            <TextBlock HorizontalAlignment="Center">Active</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding NewLogicCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical">
+                            <fa:ImageAwesome Icon="File" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">New</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding SaveLogicCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="Save" Width="25" Height="25" Margin="5" Foreground="{Binding SaveIconColor, FallbackValue=Gray}" />
+                            <TextBlock HorizontalAlignment="Center">Save</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding ExportLogicCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="Download" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">Export</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding ImportLogicCommand}" Style="{StaticResource MenuButton}">
+                        <StackPanel Orientation="Vertical" >
+                            <fa:ImageAwesome Icon="FolderOpen" Width="25" Height="25" Margin="5" Foreground="#FF8A00E5"/>
+                            <TextBlock HorizontalAlignment="Center">Import</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+            </TabItem>
+        </TabControl>
+
+        <!--CONTENT VIEW-->
+        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="1"/>
+    </Grid>
+</Window>
